@@ -43,4 +43,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.github.bumptech.glide:glide:4.13.2")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp.logging)
+    implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
 }
