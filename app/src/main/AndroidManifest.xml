@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Online_Shop"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.BaseActivity"
+            android:name=".ui.activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.IntroActivity"
+            android:name=".ui.activities.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

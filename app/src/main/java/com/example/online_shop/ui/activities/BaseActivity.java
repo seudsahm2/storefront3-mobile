@@ -1,4 +1,4 @@
-package com.example.online_shop.Activities;
+package com.example.online_shop.ui.activities;
 
 import android.os.Bundle;
 import android.view.WindowManager;
