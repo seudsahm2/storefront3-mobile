@@ -2,4 +2,6 @@
     <string name="app_name">Online_Shop</string>
     <string name="intro_title">Let\'s Shop <font color="#F3C024">the Best &amp; Cheap</font>  Products</string>
     <string name="intro_label">Already Have an account? <font color="#F3C024"> Signin</font></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
