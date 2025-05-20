@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,8 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private CategoryAdapter categoryAdapter;
+
+    private ProgressBar progressBarCategory;
     private ProgressBar progressBar;
     private ApiService apiService;
 
@@ -43,6 +47,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void initializeViews(){
+        binding.catView.setLayoutManager(
+                new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        );
+        categoryAdapter = new CategoryAdapter();
+        binding.catView.setAdapter(categoryAdapter);
+        progressBarCategory = binding.progressBarCategory;
 
     }
 
@@ -55,7 +65,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchCollections(){
-
+        
     }
 
     private void fetchProducts(){
