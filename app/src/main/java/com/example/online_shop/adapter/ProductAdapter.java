@@ -1,0 +1,56 @@
+package com.example.online_shop.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.online_shop.R;
+import com.example.online_shop.data.model.Product;
+
+import java.util.List;
+
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+
+    private List<Product> products;
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_product, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Product product = products.get(position);
+        holder.productTitle.setText(product.getTitle());
+        holder.productPrice.setText(String.format("$%.2f", product.getPriceWithTax()));
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return products != null ? products.size() : 0;
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView productTitle, productPrice;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            productTitle = itemView.findViewById(R.id.product_title);
+            productPrice = itemView.findViewById(R.id.product_price);
+        }
+    }
+}

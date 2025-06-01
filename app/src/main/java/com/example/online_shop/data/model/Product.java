@@ -24,14 +24,12 @@ public class Product {
     public String getTitle(){
         return title;
     }
-
     public String getDescription(){
         return description;
     }
     public double getUnitPrice(){
         return unitPrice;
     }
-
     public double getPriceWithTax(){
         return priceWithTax;
     }
