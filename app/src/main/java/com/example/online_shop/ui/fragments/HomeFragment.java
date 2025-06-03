@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupViewModel(){
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
         viewModel.setApiService(apiService);
     }
 
@@ -104,7 +104,6 @@ public class HomeFragment extends Fragment {
         viewModel.getProducts().observe(getViewLifecycleOwner(), products -> {
             binding.progressBarBestDeal.setVisibility(View.GONE);
             productAdapter.setProducts(products);
-            productAdapter.notifyDataSetChanged();
         });
 
         viewModel.getErrorMessage().observe(getViewLifecycleOwner(),message ->{
@@ -113,12 +112,18 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void loadData(){
-        binding.progressBarBestDeal.setVisibility(View.VISIBLE);
-        binding.progressBarCategory.setVisibility(View.VISIBLE);
-        viewModel.fetchCollections();
-        viewModel.fetchProducts();
+    private void loadData() {
+        if (viewModel.getCollections().getValue() == null) {
+            binding.progressBarCategory.setVisibility(View.VISIBLE);
+            viewModel.fetchCollections();
+        }
+
+        if (viewModel.getProducts().getValue() == null) {
+            binding.progressBarBestDeal.setVisibility(View.VISIBLE);
+            viewModel.fetchProducts();
+        }
     }
+
 
     private void setupPaginationButtons() {
         binding.nextButton.setOnClickListener(v -> {
@@ -129,6 +134,7 @@ public class HomeFragment extends Fragment {
             viewModel.loadPreviousPage();
         });
     }
+
 
 
     @Override
